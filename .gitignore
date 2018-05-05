@@ -1,32 +1,29 @@
-# Prerequisites
-*.d
+# Compiled class file
+*.class
+*/bin/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+#project file
+#*.settings/
+#*.project
+#*.classpath
+*.metadata
 
-# Precompiled Headers
-*.gch
-*.pch
+# Log file
+*.log
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# BlueJ files
+*.ctxt
 
-# Fortran module files
-*.mod
-*.smod
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
 
-# Executables
-*.exe
-*.out
-*.app
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
