@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>实验报告.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="bwt%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A">BWT算法实验报告</h1>
+<h2 id="170810-%E6%9B%B9%E8%81%AA%E8%81%AA">170810 曹聪聪</h2>
+<h2 id="%E4%B8%80-%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0">一 算法概述</h2>
+<p>Burrows-Wheeler transform(BWT，也被称作block-sorting compression)可以将字符串重新排序，使得相近的字符靠近。经过BWT变换的字符串可以方便用于其他技术如：Move-to-front变化或游程编码等进行进一步压缩。同时，BWT变化是一种可逆的变化，在进行逆操作的时候仅仅需要变化后的数据而不需要额外的空间。</p>
+<h2 id="%E4%BA%8C-%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86">二 算法原理</h2>
+<h3 id="1-%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95">1 编码算法</h3>
+<p>BWT编码算法原理很简单，对原始数据进行n次循环右移，n为字符串的长度。将移位后的n个字符串按照字典顺序进行排序，排序后的最后一列就是BWT算法编码后的结果。具体的算法流程如下：</p>
+<pre class="hljs"><code><div>function BWT (string s)
+   create a table, rows are all possible rotations of s
+   sort rows alphabetically
+   return (last column of the table)
+</div></code></pre>
+<p>以banana为例，BWT的编码过程见下表：</p>
+<div align=center>
+<table>
+<thead>
+<tr>
+<th>NO.</th>
+<th>右移结果</th>
+<th>排序后结果</th>
+<th>F</th>
+<th>L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>dogwood#</td>
+<td>#dogwood</td>
+<td>#</td>
+<td>d</td>
+</tr>
+<tr>
+<td>2</td>
+<td>#dogwood</td>
+<td>d#dogwoo</td>
+<td>d</td>
+<td>o</td>
+</tr>
+<tr>
+<td>3</td>
+<td>d#dogwoo</td>
+<td>dogwood#</td>
+<td>d</td>
+<td>#</td>
+</tr>
+<tr>
+<td>4</td>
+<td>od#dogwo</td>
+<td>gwood#do</td>
+<td>g</td>
+<td>o</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ood#dogw</td>
+<td>od#dogwo</td>
+<td>o</td>
+<td>o</td>
+</tr>
+<tr>
+<td>6</td>
+<td>wood#dog</td>
+<td>ogwood#d</td>
+<td>o</td>
+<td>d</td>
+</tr>
+<tr>
+<td>7</td>
+<td>gwood#do</td>
+<td>ood#dogw</td>
+<td>o</td>
+<td>w</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ogwood#d</td>
+<td>wood#dog</td>
+<td>w</td>
+<td>g</td>
+</tr>
+</tbody>
+</table>
+</div>
+从上表可以看出，banana#经过BWT变化后变成annb#aa，可以产出相同的字符趋向于相邻。
+<h3 id="2-%E8%A7%A3%E7%A0%81%E7%AE%97%E6%B3%95">2 解码算法</h3>
+<p>BWT的解码算法就是将BWT编码后产生的字符串恢复成原始数据。解码的思路为将编码结果排序得到原始排序后的第一列数据，然后再该列数据前对应加上BWT结果，对处理后字符串进行排序，重读上述操作直至生成长度为n的字符串。</p>
+<pre class="hljs"><code><div>function inverseBWT(string s)
+    B = [s1, s2, s3, ... sn ]
+    for i = 1 .. n:
+        sort B
+        prepend si to B[i]
+    return row of B of begin index
+</div></code></pre>
+<p>一个BWT解码的实例见下图：</p>
+<p><img src="pic/pic1.png" alt="BWT 解码实例"></p>
+<p>从上图可以看出BWT的解码算法可以无损地恢复出原始字符串。</p>
+<h3 id="3-%E9%80%9A%E8%BF%87lf-mapping%E8%BF%9B%E8%A1%8C%E8%A7%A3%E7%A0%81">3 通过LF Mapping进行解码</h3>
+<p>在BWT的实际解码过程中，保存所有的字符串是不现实的。BWT算法有一种重要的特性叫做LF Mapping，相同字符在最后一行出现的顺序和第一行出现的顺序是相同的，通过该种特性可以方便地进行解码。</p>
+<p>由于相同字符串在第一行和最后一行出现的顺序是相同的，同时在原始序列中，最后一行的字符是其所在行首个字符的前一位。根据这两个特性，我们仅仅需要首尾两行就可以将原始序列恢复出来。其伪代码如下所示：</p>
+<pre class="hljs"><code><div>function inverseBWTbyLF(string L)
+    string F = sort(L)
+    index = begin index
+    Leng = string.length
+    while(leng &gt; 0)
+        result.append(L[index])
+        index = index of F[i] in L with same order
+    return result
+</div></code></pre>
+<p>首先对BWT编码后的字符串进行排序得到第一行的字符，然后首先找出L中起始位置，然后找出F中相同顺序的相同字符的L位置中对应的字符，该字符就是前一个字符的下一个字符。按照上述依次进行，直至找到所有的字符。</p>
+<p>为了能够快速的找到F中与L对应位置的相同字符，可以额外保存一组字符表示L中的顺序。</p>
+<div align=center>
+<table>
+<thead>
+<tr>
+<th>F</th>
+<th>L</th>
+<th>RANK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>d</td>
+<td>0</td>
+</tr>
+<tr>
+<td>d</td>
+<td>o</td>
+<td>0</td>
+</tr>
+<tr>
+<td>d</td>
+<td>#</td>
+<td>0</td>
+</tr>
+<tr>
+<td>g</td>
+<td>o</td>
+<td>1</td>
+</tr>
+<tr>
+<td>o</td>
+<td>o</td>
+<td>2</td>
+</tr>
+<tr>
+<td>o</td>
+<td>d</td>
+<td>1</td>
+</tr>
+<tr>
+<td>o</td>
+<td>w</td>
+<td>0</td>
+</tr>
+<tr>
+<td>w</td>
+<td>g</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>上表中的rank表示L中的该字符在当前字符之前出现了多少次。</p>
+<h3 id="4-background-search">4 background search</h3>
+<p>background search是一种在BWT编码结果中进行字符查找的方法，该方法从待查找字符串的最后一个字符依次开始匹配。</p>
+<p>以在abaaba中查找aba为例，首先需要眨着aba中的最后一个字符a。在F列中查找所有以a为开头的字符。</p>
+<div align=center>
+<p><img src="pic/search1.png" alt="BWT第一轮搜索"></p>
+</div>
+在F列中以a为开头的字符串总共有四个，其前一个字符对应的字符为b的共有两个，转到以对应的b开头的F中的行，在本例中对应的是b0和b1。
+<div align=center>
+<p><img src="pic/search2.png" alt="BWT第二轮搜索"></p>
+</div>
+<p>此时找到的两个b的前一个字符都是a,所以本次查找一共找到了两个aba。</p>
+<p>在后向匹配中，我们使用LF Mapping不断寻找能匹配上待匹配字符P的后缀字符的的行，直至找到最后的需要的字符或者找不到。</p>
+<h2 id="%E4%B8%89-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E4%B8%8E%E9%AA%8C%E8%AF%81">三 代码实现与验证</h2>
+<p>在本次实验中，我们选择Java语言进行实现。</p>
+<h3 id="1-%E7%BC%96%E7%A0%81%E7%AE%97%E6%B3%95">1 编码算法</h3>
+<pre class="hljs"><code><div>	<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> String <span class="hljs-title">encodeCore</span><span class="hljs-params">(String input)</span>
+	</span>{
+		StringBuilder tmpResult = <span class="hljs-keyword">new</span> StringBuilder();
+		<span class="hljs-keyword">int</span> length = input.length();
+		<span class="hljs-comment">//创建一个长度为length的数组，保存每次循环移位的结果</span>
+		ArrayList&lt;String&gt; table = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(length);
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) {
+			String tmp = input.substring(i)+input.substring(<span class="hljs-number">0</span>,i);
+			table.add(tmp);
+		} 
+		Collections.sort(table);
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; length; i++) {
+			tmpResult.append(table.get(i).charAt(length-<span class="hljs-number">1</span>));
+		}
+		<span class="hljs-keyword">return</span> tmpResult.toString();
+	}
+</div></code></pre>
+<p>在编码算法中，直接对输入字串进行循环移位，并对循环移位的结果进行排序。最后将排序结果的最后一列作为编码结果返回。</p>
+<h3 id="2-%E8%A7%A3%E7%A0%81%E7%AE%97%E6%B3%95">2 解码算法</h3>
+<pre class="hljs"><code><div>	<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> String <span class="hljs-title">decodeCore</span><span class="hljs-params">(String encode, <span class="hljs-keyword">int</span> begin, <span class="hljs-keyword">int</span>[] lIndex)</span>
+	</span>{
+		String F = getFrist(encode);
+		<span class="hljs-comment">//统计字符串,存储字符和第一次出现的时间</span>
+		HashMap&lt;Character, Integer&gt; fristMap = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+		<span class="hljs-comment">//排序获取第一行</span>
+		<span class="hljs-keyword">char</span> tmp = F.charAt(<span class="hljs-number">0</span>);
+		fristMap.put(tmp, <span class="hljs-number">0</span>);
+		<span class="hljs-keyword">int</span> Frisrindex = <span class="hljs-number">1</span>;
+		<span class="hljs-comment">//对排序后的第一行的字符串进行统计</span>
+		<span class="hljs-keyword">while</span> (Frisrindex &lt; F.length()) {
+			<span class="hljs-keyword">if</span> (tmp == F.charAt(Frisrindex))
+			{
+				Frisrindex++;
+				<span class="hljs-keyword">continue</span>;
+			}
+			<span class="hljs-keyword">else</span> {
+				fristMap.put(F.charAt(Frisrindex), Frisrindex);
+				tmp = F.charAt(Frisrindex);
+				Frisrindex++;
+			}
+		}
+		
+		StringBuilder result = <span class="hljs-keyword">new</span> StringBuilder();
+		<span class="hljs-keyword">int</span> num = <span class="hljs-number">0</span>;
+		<span class="hljs-keyword">int</span> tmpIndex = begin;
+		<span class="hljs-keyword">while</span>(num &lt; encode.length())
+		{
+			result.append(encode.charAt(tmpIndex));
+			tmpIndex = fristMap.get(encode.charAt(tmpIndex))+lIndex[tmpIndex];
+			num++;
+		}
+		result = result.reverse();
+		<span class="hljs-keyword">return</span> result.toString();
+	}
+</div></code></pre>
+<p>解码算法使用一个Hashmap保存第一列中每个字符串中第一个出现的时间，使用int数组保存在最后一列中在它之前出现的相同字符的个数。通过不断循环搜索找到最后的结果。</p>
+<h3 id="3-%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95">3 搜索算法</h3>
+<pre class="hljs"><code><div>	<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">bwtSearch</span><span class="hljs-params">(String encode, String p, <span class="hljs-keyword">int</span>[] lIndex)</span>
+	</span>{
+		String F = getFrist(encode);
+		<span class="hljs-comment">//统计字符串,存储字符和第一次出现的时间</span>
+		HashMap&lt;Character, Integer&gt; fristMap = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+		<span class="hljs-keyword">char</span> tmp = F.charAt(<span class="hljs-number">0</span>);
+		fristMap.put(tmp, <span class="hljs-number">0</span>);
+		<span class="hljs-keyword">int</span> Frisrindex = <span class="hljs-number">1</span>;
+		<span class="hljs-comment">//对排序后的第一行的字符串进行统计</span>
+		<span class="hljs-keyword">while</span> (Frisrindex &lt; F.length()) {
+			<span class="hljs-keyword">if</span> (tmp == F.charAt(Frisrindex))
+			{
+				Frisrindex++;
+				<span class="hljs-keyword">continue</span>;
+			}
+			<span class="hljs-keyword">else</span> {
+				fristMap.put(F.charAt(Frisrindex), Frisrindex);
+				tmp = F.charAt(Frisrindex);
+				Frisrindex++;
+			}
+		}
+		<span class="hljs-keyword">int</span> Plength = p.length()-<span class="hljs-number">1</span>;
+		Vector&lt;Integer&gt; targetRows = <span class="hljs-keyword">new</span> Vector&lt;&gt;();
+		<span class="hljs-comment">//第一次首先将所有的字符串的最后一位全部加入</span>
+		<span class="hljs-keyword">if</span> (p.length()==<span class="hljs-number">0</span>)
+		{
+			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+		}
+		<span class="hljs-keyword">char</span> target = p.charAt(Plength);
+		<span class="hljs-keyword">if</span>(!fristMap.containsKey(target))
+		{
+			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+		}
+		<span class="hljs-keyword">int</span> initIndex = fristMap.get(target);
+		<span class="hljs-keyword">while</span>(initIndex &lt; encode.length())
+		{
+			<span class="hljs-keyword">if</span> (F.charAt(initIndex) == target)
+			{
+				targetRows.add(initIndex);
+				initIndex++;
+			}
+			<span class="hljs-keyword">else</span> {
+				<span class="hljs-keyword">break</span>;
+			}
+		}
+		Plength--;
+		
+		<span class="hljs-keyword">while</span> (Plength &gt;= <span class="hljs-number">0</span> &amp;&amp; targetRows.size() &gt; <span class="hljs-number">0</span>) {
+			<span class="hljs-comment">//对于所有潜在的目标，寻找可能的下一行</span>
+			Vector&lt;Integer&gt; nextTarget = <span class="hljs-keyword">new</span> Vector&lt;&gt;();
+			target = p.charAt(Plength);
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> chooseIndex : targetRows)
+			{
+				<span class="hljs-keyword">if</span> (encode.charAt(chooseIndex) == target)
+				{
+					nextTarget.add(fristMap.get(encode.charAt(chooseIndex))+lIndex[chooseIndex]);
+				}
+			}
+			<span class="hljs-comment">//重新进行覆盖</span>
+			targetRows = nextTarget;
+			Plength--;
+		}
+		<span class="hljs-keyword">return</span> targetRows.size();
+	}
+</div></code></pre>
+<p>搜索算法与解码算法很类似，只是需要根据每次匹配的结果依次缩小搜索范围，直到最后搜索到结果或者搜索不到。</p>
+
+</body>
+</html>

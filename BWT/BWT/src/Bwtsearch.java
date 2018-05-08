@@ -1,11 +1,20 @@
-import java.awt.event.ItemEvent;
-import java.io.ObjectInputStream.GetField;
+import java.awt.List;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Vector;
+
+import javax.swing.text.AbstractDocument.BranchElement;
 
 
 
@@ -41,6 +50,7 @@ public class Bwtsearch {
 		String F = getFrist(encode);
 		//统计字符串,存储字符和第一次出现的时间
 		HashMap<Character, Integer> fristMap = new HashMap<>();
+		//排序获取第一行
 		char tmp = F.charAt(0);
 		fristMap.put(tmp, 0);
 		int Frisrindex = 1;
@@ -69,7 +79,6 @@ public class Bwtsearch {
 		}
 		result = result.reverse();
 		return result.toString();
-		
 	}
 	/*
 	 * 获取编码对应的第一列的数据
@@ -106,6 +115,7 @@ public class Bwtsearch {
 	 */
 	static public int bwtSearch(String encode, String p, int[] lIndex)
 	{
+		
 		String F = getFrist(encode);
 		//统计字符串,存储字符和第一次出现的时间
 		HashMap<Character, Integer> fristMap = new HashMap<>();
@@ -168,20 +178,95 @@ public class Bwtsearch {
 		}
 		return targetRows.size();
 	}
+	
+	static ArrayList<String> ReadFile(String inputPath)
+	{
+		ArrayList<String> result = new ArrayList<>();
+		try {
+			FileReader fr = new FileReader(inputPath);
+			BufferedReader br = new BufferedReader(fr);
+			String data = br.readLine();
+			while(data != null)
+			{
+				result.add(data);
+				data = br.readLine();
+			}
+			br.close();
+			fr.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;	
+	}
+	
+	static void writeFile(String outputPath, ArrayList<String> outputData)
+	{
+		FileWriter fWriter;
+		try {
+			fWriter = new FileWriter(outputPath);
+			BufferedWriter  bw=new BufferedWriter(fWriter);
+			for(String arr: outputData){
+	            bw.write(arr+"\r\n");
+	        }
+			bw.close();
+			fWriter.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void encode(String inputPath, String outputPath)
+	{
+		ArrayList<String> read = ReadFile(inputPath);
+		ArrayList<String> readData = new ArrayList<>();
+		for (String data: read) {
+			StringBuilder withEnd = new StringBuilder();
+			withEnd.append(data);
+			withEnd.append("#");
+			readData.add(withEnd.toString());
+		}
+		ArrayList<String> encodeResult = new ArrayList<>();
+		for(String data : readData)
+		{
+			encodeResult.add(encodeCore(data));
+		}
+		writeFile(outputPath, encodeResult);
+	}
+	
+	public static void decode(String inputPath)
+	{
+		ArrayList<String> readData = ReadFile(inputPath);
+		for (String data : readData) {
+			int begin = data.indexOf("#");
+			int[] lIndex = getIndex(data);
+			System.out.println(decodeCore(data, begin, lIndex));
+		}
+	}
+	
+	public static void search(String inputPath, String P)
+	{
+		ArrayList<String> readData = ReadFile(inputPath);
+		for (int i =0; i < readData.size(); i++) {
+			String data = readData.get(i);
+			int[] lIndex = getIndex(data);
+			int num = bwtSearch(data, P, lIndex);
+			if (num > 0)
+			{
+				System.out.printf("第%d行有%d个需要搜索的字符\n", i+1, num);
+			}
+		}
+	}
 	public static void main(String[] args) {
-		String test = "Tomorrow and tomorrow and tomorrow#";
-//		String test = "abaaba#";
-		String encode = encodeCore(test);
-		System.out.println(encode);
-		int begin = encode.indexOf("#");
-		System.out.printf("#所在的index:%d\n",begin);
-		//获得最后一行的index
-		int[] lIndex = getIndex(encode);
-		String decode = decodeCore(encode, begin, lIndex);
-		System.out.println(decode);
-//		String p = "aba";
-		String p = " ";
-		int num = bwtSearch(encode, p, lIndex);
-		System.out.println(num);
+		encode("Input/input.txt","Encoded/encoded.txt");
+		decode("Encoded/encoded.txt");
+		search("Encoded/encoded.txt", "I");
 	}
 }
